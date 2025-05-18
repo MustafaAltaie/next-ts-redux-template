@@ -1,8 +1,15 @@
 {
   "name": "next-ts-redux-mustafa",
-  "version": "0.1.0",
-  "files": ["template", "template.json"],
-  "keywords": ["nextjs", "redux", "template"],
+  "version": "0.1.1",
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "keywords": [
+    "nextjs",
+    "redux",
+    "template"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
