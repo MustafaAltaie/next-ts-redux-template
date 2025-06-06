@@ -1,11 +1,11 @@
-'use client';
+
 
 const page = () => {
-  return (
-    <div>
-      App is ready
-    </div>
-  )
+    return (
+      <div>
+        
+      </div>
+    )
 }
 
 export default page;
