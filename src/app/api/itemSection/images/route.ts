@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import cloudinary from '../../../../../lib/cloudinary';
+import cloudinary from '../../../../../lib/coudinary';
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData();

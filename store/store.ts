@@ -1,15 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-// import { persistStore, persistReducer } from "redux-persist";
-import { api } from '../features/api/apiSlice';
-import cartSlice from '../features/cart/cartSlice';
-import adminSlice from '../features/admin/adminSlice';
+import { api } from '../features/api/api';
+// import cartSlice from '../features/cart/cartSlice';
 
 export const store = configureStore({
   reducer: {
-    cart: cartSlice,
-    [api.reducerPath]: api.reducer,
-    admin: adminSlice
+    // cart: cartSlice,
+    [api.reducerPath]: api.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
