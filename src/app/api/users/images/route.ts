@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import cloudinary from '../../../../../lib/coudinary';
+import cloudinary from '../../../../../lib/cloudinary';
 
 export async function POST(req: NextRequest) {
   const formData = await req.formData();
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     const result = await new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       {
-        folder: 'folderName',
+        folder: 'section2-images',
         public_id: file.name.split('.').slice(0, -1).join(''),
         resource_type: 'image',
       },
@@ -41,7 +41,6 @@ export async function POST(req: NextRequest) {
   }
 }
 
-
 type CloudinaryResource = {
   secure_url: string;
 }
@@ -49,7 +48,7 @@ type CloudinaryResource = {
 export async function GET() {
   try {
     const result = await cloudinary.search
-      .expression('folder:folderName AND resource_type:image')
+      .expression('folder:section2-images AND resource_type:image')
       .sort_by('public_id', 'desc')
       .max_results(30)
       .execute();

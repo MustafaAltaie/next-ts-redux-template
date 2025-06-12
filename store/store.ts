@@ -1,19 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { api } from '../features/api/api';
-// import cartSlice from '../features/cart/cartSlice';
+import { api } from '../features/api/apiSlice';
 
-export const store = configureStore({
-  reducer: {
-    // cart: cartSlice,
-    [api.reducerPath]: api.reducer
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
-});
+export const makeStore = () => {
+  const store = configureStore({
+    reducer: {
+      [api.reducerPath]: api.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(api.middleware),
+  });
 
-setupListeners(store.dispatch);
+  setupListeners(store.dispatch);
+  return store;
+};
 
-// Infer types
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore['getState']>;
+export type AppDispatch = AppStore['dispatch'];
